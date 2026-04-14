@@ -7,7 +7,7 @@
 // Define o valor do registrador MOD do TPM para configurar o período do PWM
 #define TPM_MODULE 1000         // Define a frequência do PWM fpwm = (TPM_CLK / (TPM_MODULE * PS))
 // Valores de duty cycle correspondentes a diferentes larguras de pulso
-uint16_t duty_50  = TPM_MODULE*0.4;       
+uint16_t duty_50  = TPM_MODULE*0.7;       
 uint16_t duty_25  = TPM_MODULE*0.9;       
 
 int main(void)
