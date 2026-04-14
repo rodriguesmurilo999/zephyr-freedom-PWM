@@ -3,6 +3,7 @@
 #include <zephyr/drivers/gpio.h>       // API para controle de pinos de entrada/saída (GPIO)
 #include <pwm_z42.h>                   // Biblioteca personalizada com funções de controle do TPM (Timer/PWM Module)
 
+#define TEMPO 1000 // 1 segundo
 // Define o valor do registrador MOD do TPM para configurar o período do PWM
 #define TPM_MODULE 1000         // Define a frequência do PWM fpwm = (TPM_CLK / (TPM_MODULE * PS))
 // Valores de duty cycle correspondentes a diferentes larguras de pulso
@@ -23,7 +24,14 @@ int main(void)
     // - modo TPM_PWM_H (nível alto durante o pulso)
     pwm_tpm_Ch_Init(TPM2, 1, TPM_PWM_H, GPIOB, 19); // Verde
 
-    pwm_tpm_CnV(TPM2, 0, duty_50);
+    // Loop infinito
+    while(1)
+    {
+        pwm_tpm_CnV(TPM2, 1, duty_50);
+        k_msleep(TEMPO);
+        pwm_tpm_CnV(TPM2, 1, 1000);
+        k_msleep(TEMPO);
+    }
 
     return 0;
-}
+}   
