@@ -24,6 +24,7 @@ int main(void)
     //Pinos dos motores (PTC8 e PTC9 para anti-hor)
     pwm_tpm_Ch_Init(TPM1, 0, TPM_PWM_H, GPIOA, 12); //PTC8
     pwm_tpm_Ch_Init(TPM1, 1, TPM_PWM_H, GPIOA, 13); //PTC9
+    
     // Loop infinito
     while(1)
     {   
